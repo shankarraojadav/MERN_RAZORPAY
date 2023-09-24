@@ -3,17 +3,21 @@ import crypto from "crypto";
 import { Payment } from "../models/paymentModel.js";
 
 export const checkout = async (req, res) => {
-  const options = {
-    amount: Number(req.body.amount * 100),
-    currency: "INR",
-  };
+  try {
+    const options = {
+      amount: Number(req.body.amount * 100),
+      currency: "INR",
+    };
 
-  const order = await instance.orders.create(options);
+    const order = await instance.orders.create(options);
 
-  res.status(200).json({
-    success: true,
-    order,
-  });
+    res.status(200).json({
+      success: true,
+      order,
+    });
+  } catch (error) {
+    res.status(500).json(error)
+  }
 };
 
 export const paymentVerification = async (req, res) => {
