@@ -6,8 +6,8 @@ export default function Home() {
 
     
     const checkoutHandler =async (amount) => {
-        const { data: { key } } = await axios.get("http://localhost:4000/payment/getkey")
-        const { data: { order } } = await axios.post("http://localhost:4000/payment/checkout", {
+        const { data: { key } } = await axios.get("https://razorpay-mern-app.onrender.com/payment/getkey")
+        const { data: { order } } = await axios.post("https://razorpay-mern-app.onrender.com/payment/checkout", {
             amount
         });
 
@@ -18,7 +18,7 @@ export default function Home() {
             name: "SHANKARA RAO JADAV C",
             description: "RazorPay PRACTICE",
             order_id: order.id,
-            callback_url: "http://localhost:4000/payment/paymentverification",
+            callback_url: "https://razorpay-mern-app.onrender.com/payment/paymentverification",
             prefill: {
                 name: "SHANKAR RAO JADAV",
                 email: "shankarjadav.com",
